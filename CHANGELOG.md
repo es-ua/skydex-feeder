@@ -9,6 +9,43 @@ downloaded is what is declared here:
 shasum -a 256 SkydexFeeder-<version>.dmg
 ```
 
+## 0.1.4 — 2026-08-08
+
+**Fixed: a healthy feed could report "Decoder keeps crashing".** On start the
+app launched a second decoder a fraction of a second after the first. The
+first one kept the SDR and the local beast port and fed normally; the second
+died instantly on `bind: Address already in use`, and the supervisor spent the
+rest of the session restarting the one that could never win — red icon,
+climbing retry counter, aircraft flowing the whole time. Only the status was
+wrong, which is its own kind of bad: it makes a working station look broken.
+
+Two causes, both fixed. The background refresh of `feeder-config.json`
+restarted the decoder whenever the fetched config differed from the built-in
+fallback *in any field* — including a link that never reaches readsb's
+argv — so it now restarts only when the ingest endpoint actually moves. And
+`ReadsbSupervisor.start()` launched unconditionally, so a second call spawned
+a second process instead of replacing the first; it now takes the running
+decoder down and waits for the port and the USB device to be free before
+launching again.
+
+Worth recording how it stayed hidden: the config refresh could never differ
+from the fallback while `feed.skydex.online/feeder-config.json` was
+misconfigured and served HTML. Publishing a real config that day is what woke
+the bug — the app had not changed.
+
+| | |
+| --- | --- |
+| File | `SkydexFeeder-0.1.4.dmg` |
+| SHA-256 | `0a36d27db7f6207e72f2a0efba196680010076f7b14078adb06ab92c01ee9a23` |
+| Signed | Developer ID Application: Essotek, TOV · notarized by Apple |
+
+| Component | Version |
+| --- | --- |
+| readsb | 3.16.15 — wiedehopf git `v3.16-84-g05df27d` |
+| librtlsdr | v2.0.2 |
+| libusb | 1.0.30 |
+| zstd | 1.5.6 |
+
 ## 0.1.3 — 2026-08-08
 
 **Skydex has an off switch in Settings.** Feeding us could always be turned
