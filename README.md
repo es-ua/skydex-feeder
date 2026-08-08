@@ -1,5 +1,10 @@
 # Skydex Feeder for macOS — downloads & bundled-decoder sources
 
+<!-- OPERATOR: drop a screenshot of the menu bar dropdown (green status,
+     live aircraft count) as docs/menubar-green.png and uncomment:
+![Skydex Feeder — menu bar dropdown showing live aircraft and message rate](docs/menubar-green.png)
+-->
+
 **Skydex Feeder** is a native macOS menu bar app that turns an RTL-SDR
 stick into an ADS-B feeder: bundled decoder, two-minute setup wizard, no
 terminal, no Docker, no Raspberry Pi. It feeds the
@@ -25,9 +30,12 @@ version). Product page: <https://feed.skydex.online/mac>.
 The Skydex Feeder app itself is closed-source (its codebase seeds our
 mobile app). This repository is the app's public home:
 
-1. **Release notes** — one entry per shipped version, listing the exact
-   versions of all bundled components (downloads themselves are served
-   from [feed.skydex.online/download](https://feed.skydex.online/download)).
+1. **Release notes** — [CHANGELOG.md](CHANGELOG.md) and the GitHub
+   Releases tab: one entry per shipped version with the exact versions of
+   all bundled components and the **SHA-256 of the DMG**, so a download
+   from the site can be verified against what this repo declares
+   (downloads themselves are served from
+   [feed.skydex.online/download](https://feed.skydex.online/download)).
 2. **Decoder sources** — the app bundles [readsb](https://github.com/wiedehopf/readsb)
    (GPL-3.0-or-later), statically linked with
    [librtlsdr](https://github.com/osmocom/rtl-sdr) (GPL-2.0-or-later) and
