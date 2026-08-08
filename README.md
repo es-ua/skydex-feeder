@@ -10,8 +10,9 @@ non-exclusively — any other network in parallel.
 
 ## Download
 
-⬇ **[Latest release](https://github.com/es-ua/skydex-feeder/releases/latest)** —
-signed & notarized DMG.
+⬇ **<https://feed.skydex.online/download>** — the current signed &
+notarized DMG (a stable link that always redirects to the latest
+version). Product page: <https://feed.skydex.online/mac>.
 
 - macOS 13 (Ventura) or newer
 - Apple silicon and Intel (universal binary)
@@ -24,8 +25,9 @@ signed & notarized DMG.
 The Skydex Feeder app itself is closed-source (its codebase seeds our
 mobile app). This repository is the app's public home:
 
-1. **Releases** — every DMG we ship, with release notes listing the exact
-   versions of all bundled components.
+1. **Release notes** — one entry per shipped version, listing the exact
+   versions of all bundled components (downloads themselves are served
+   from [feed.skydex.online/download](https://feed.skydex.online/download)).
 2. **Decoder sources** — the app bundles [readsb](https://github.com/wiedehopf/readsb)
    (GPL-3.0-or-later), statically linked with
    [librtlsdr](https://github.com/osmocom/rtl-sdr) (GPL-2.0-or-later) and

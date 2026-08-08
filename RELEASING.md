@@ -12,14 +12,17 @@ process being visible is part of the trust story).
    xcrun stapler validate "Skydex Feeder.dmg"
    spctl -a -vv -t install "Skydex Feeder.app"   # accepted · notarized
    ```
-3. Create the GitHub release **in this repo**, tag `vX.Y.Z`, and attach
-   **two copies** of the artifact:
-   - `Skydex-Feeder-X.Y.Z.dmg` — the archival name;
-   - `Skydex-Feeder.dmg` — stable name, so
-     `…/releases/latest/download/Skydex-Feeder.dmg` is a permanent
-     direct-download URL for landing pages.
-4. Release notes must include the bundled-components table (this is the
-   GPL source-offer precision):
+3. Publish the download (self-hosted from the site VPS): commit the DMG
+   as `feedsite/download/SkydexFeeder-X.Y.Z.dmg` in the site repo and
+   bump the version in the `location = /download` redirect on the feed
+   vhost (`nginx/conf.d/default.conf`) — that one line is the whole
+   publish step; <https://feed.skydex.online/download> always points at
+   the current version. After deploy, verify the redirect serves
+   `application/x-apple-diskimage`, not `text/html`.
+4. Create a GitHub release **in this repo** for the same `vX.Y.Z` tag —
+   release notes only (assets optional, as a mirror). Notes must include
+   the bundled-components table (this is the GPL source-offer
+   precision):
 
    | Component | Version |
    | --- | --- |
