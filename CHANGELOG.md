@@ -9,6 +9,30 @@ downloaded is what is declared here:
 shasum -a 256 SkydexFeeder-<version>.dmg
 ```
 
+## 0.1.3 — 2026-08-08
+
+**Skydex has an off switch in Settings.** Feeding us could always be turned
+off, but only by editing `skydex.enabled` in `config.json` — while adsb.lol
+and the other networks had toggles in the UI. That is backwards for an app
+whose selling point is that it doesn't lock your stick to one network, so
+Skydex now sits in the same list as everyone else. The rules are unchanged:
+allowed, free, no account, warned once and never blocked. Other networks
+keep feeding while it's off; the menu bar icon can't go green in that state,
+because green specifically means the Skydex connector is healthy.
+
+| | |
+| --- | --- |
+| File | `SkydexFeeder-0.1.3.dmg` |
+| SHA-256 | `5ed334174bac2d651ad81ef26954deb7cf5dd7264a4f9bf9478585be61bd1217` |
+| Signed | Developer ID Application: Essotek, TOV · notarized by Apple |
+
+| Component | Version |
+| --- | --- |
+| readsb | 3.16.15 — wiedehopf git `v3.16-84-g05df27d` |
+| librtlsdr | v2.0.2 |
+| libusb | 1.0.30 |
+| zstd | 1.5.6 |
+
 ## 0.1.2 — 2026-08-08
 
 **Corrected licence notice.** The licence README inside 0.1.1 labelled the
