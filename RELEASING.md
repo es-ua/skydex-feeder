@@ -5,8 +5,17 @@ process being visible is part of the trust story).
 
 1. In the app repo: pin `READSB_REF` in `scripts/build-readsb.sh` to an
    exact readsb tag (never release off `latest` — the release notes must
-   name the tag), sync the copy of the script into this repo, tag
-   `vX.Y.Z` → CI builds, signs (Developer ID) and notarizes the DMG.
+   name the tag), sync the copy of the script into this repo, bump
+   `MARKETING_VERSION` in `project.yml`, then build:
+
+   ```sh
+   make test && ./scripts/release-local.sh
+   ```
+
+   That signs with the Developer ID, notarizes and staples locally. (Tagging
+   `vX.Y.Z` runs the same steps in CI once the signing secrets are set; the
+   local script exists so a release doesn't depend on that, and so a
+   notarization failure can be debugged interactively.)
 2. Verify the artifact locally before publishing:
    ```sh
    xcrun stapler validate "Skydex Feeder.dmg"
@@ -19,7 +28,11 @@ process being visible is part of the trust story).
    publish step; <https://feed.skydex.online/download> always points at
    the current version. After deploy, verify the redirect serves
    `application/x-apple-diskimage`, not `text/html`.
-4. Create a GitHub release **in this repo** for the same `vX.Y.Z` tag —
+4. Update the pages that state a version or a claim:
+   `feedsite/mac.html` (the version line in the hero **and** the "What's new"
+   list), `feedsite/mac-changelog.html`, and `CHANGELOG.md` here. A download
+   page that names the previous version is worse than one that names none.
+5. Create a GitHub release **in this repo** for the same `vX.Y.Z` tag —
    release notes only (assets optional, as a mirror). Notes must include
    the bundled-components table (this is the GPL source-offer
    precision):
@@ -32,6 +45,6 @@ process being visible is part of the trust story).
    | zstd | 1.5.6 |
 
    …plus user-facing changes, in plain words.
-5. v0.2+: update the Sparkle appcast in this repo after the release
+6. v0.2+: update the Sparkle appcast in this repo after the release
    assets are up (appcast entries point at the archival-name asset, not
    the stable-name one).
