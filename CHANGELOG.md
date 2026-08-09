@@ -9,6 +9,42 @@ downloaded is what is declared here:
 shasum -a 256 SkydexFeeder-<version>.dmg
 ```
 
+## 0.1.6 — 2026-08-10
+
+**The app has an icon.** macOS drew its generic placeholder everywhere the app
+appears — Finder, Launchpad, Spotlight, the installer window.
+
+**"Check my feed" for adsb.lol.** Asks the network what it is receiving from
+your station and links straight to your page there. A connected socket only
+proves the app is talking; this is the network answering. The button appears
+only where there is something to ask: airplanes.live identifies feeders by
+source IP, so it gets a link to its own status page instead.
+
+**An About panel** carrying the version, the feeder links, and where the
+bundled decoder's GPL sources live. A menu-bar-only app has no menu bar of its
+own, so neither was reachable from inside the app before — which matters more
+than cosmetics when the thing you ship is GPL.
+
+**The installer window is laid out** instead of being a bare file list: app on
+the left, Applications on the right, arrow between, branded background.
+
+Housekeeping: the bundled readsb is pinned to an exact tag instead of
+"latest", so a rebuild produces the decoder the release notes describe; and
+1.4 MB of build leftovers (the icon masters) no longer ship inside the app.
+
+| | |
+| --- | --- |
+| File | `SkydexFeeder-0.1.6.dmg` |
+| SHA-256 | `183845b45667481d4aee3da2fb7bfb9d9b4eae22d7fa7dee163324cd6bb246b4` |
+| Signed | Developer ID Application: Essotek, TOV · notarized by Apple |
+
+| Component | Version |
+| --- | --- |
+| readsb | 3.16.15 — wiedehopf git `v3.16-84-g05df27d` |
+| librtlsdr | v2.0.2 |
+| libusb | 1.0.30 |
+| zstd | 1.5.6 |
+
 ## 0.1.5 — 2026-08-09
 
 **Settings fit on the screen again.** The window was sized to its content, so

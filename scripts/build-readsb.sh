@@ -39,7 +39,10 @@ ZSTD_VERSION="1.5.6"
 ZSTD_URL="https://github.com/facebook/zstd/releases/download/v${ZSTD_VERSION}/zstd-${ZSTD_VERSION}.tar.gz"
 RTLSDR_REF="v2.0.2"
 RTLSDR_REPO="https://github.com/osmocom/rtl-sdr.git"
-READSB_REF="latest"   # resolved to newest tag below; pin a tag for releases
+# Pinned deliberately: every release names this exact build in its notes
+# (the GPL source offer). Bump it consciously, never leave it on "latest"
+# — a rebuild would then ship a decoder the notes don't describe.
+READSB_REF="v3.16.15"
 READSB_REPO="https://github.com/wiedehopf/readsb.git"
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -53,14 +56,6 @@ MACOS_MIN="13.0"
 mkdir -p "$BUILD" "$OUT_BIN" "$OUT_LIC"
 
 # --- fetch sources ---------------------------------------------------------
-
-fetch() {
-    local dir="$1"
-    if [[ ! -d "$BUILD/$dir" ]]; then
-        return 0
-    fi
-    return 1
-}
 
 cd "$BUILD"
 
