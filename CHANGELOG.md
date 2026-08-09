@@ -9,6 +9,38 @@ downloaded is what is declared here:
 shasum -a 256 SkydexFeeder-<version>.dmg
 ```
 
+## 0.1.5 — 2026-08-09
+
+**Settings fit on the screen again.** The window was sized to its content, so
+every section added made it taller; once the networks list arrived it no
+longer fit a laptop display and the bottom was unreachable. It is now three
+tabs — Station, Networks, General — in a fixed window that scrolls.
+
+**Turning a network on now tells you it isn't live yet.** readsb's
+destinations are fixed when it launches, so flipping a toggle changed nothing
+until the feed restarted — and nothing on screen said so. A station could sit
+there feeding fewer networks than its own settings claimed, which is how this
+was found. The section now compares the running decoder's arguments against
+the current settings and warns when they differ, with an "Apply now" button
+beside the warning.
+
+Also: the decoder-restart decision moved into
+`FeederConfig.decoderRestartNeeded(switchingTo:)` with a test, so the 0.1.4
+fix can't quietly regress into restarting on every remote-config difference.
+
+| | |
+| --- | --- |
+| File | `SkydexFeeder-0.1.5.dmg` |
+| SHA-256 | `5b697d58ab0077c72a11121cd3985b69c9d727f638b0a38116debb1b50cb5025` |
+| Signed | Developer ID Application: Essotek, TOV · notarized by Apple |
+
+| Component | Version |
+| --- | --- |
+| readsb | 3.16.15 — wiedehopf git `v3.16-84-g05df27d` |
+| librtlsdr | v2.0.2 |
+| libusb | 1.0.30 |
+| zstd | 1.5.6 |
+
 ## 0.1.4 — 2026-08-08
 
 **Fixed: a healthy feed could report "Decoder keeps crashing".** On start the
