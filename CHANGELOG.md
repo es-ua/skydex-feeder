@@ -9,6 +9,43 @@ downloaded is what is declared here:
 shasum -a 256 SkydexFeeder-<version>.dmg
 ```
 
+## 0.1.7 — 2026-08-10
+
+**The app updates itself.** Six releases went out in the first two days and
+every one of them asked you to download the DMG and drag it over again. From
+this version the app checks daily and offers the update in place, with a
+"Check for Updates…" item in the menu for when you don't want to wait.
+
+Updates carry our own signature on top of Apple's notarisation. The two answer
+different questions: notarisation says the file came from us and contains no
+known malware, the update signature says *this particular update* is the one
+we published. A swapped file is refused even when it is served from our own
+domain.
+
+**If you are running 0.1.6 or older, install this one by hand** — those builds
+have no updater in them. It is the last manual step.
+
+Under the hood: Sparkle 2.9.5, its four nested helpers signed with our
+Developer ID (they ship pre-signed, Xcode re-signs only the framework wrapper,
+and `codesign --verify --deep` does not catch it — the notary log does), and
+`scripts/make-appcast.sh` now signs the DMG and refreshes the feed as part of
+cutting a release, so publishing and reaching existing installs are one step.
+
+| | |
+| --- | --- |
+| File | `SkydexFeeder-0.1.7.dmg` |
+| SHA-256 | `3f1f846c0d0fe41ce3f45ca519814f4e9521997c9502c47b1dfa978afdaac965` |
+| Signed | Developer ID Application: Essotek, TOV · notarized by Apple |
+| Update feed | https://feed.skydex.online/appcast.xml |
+
+| Component | Version |
+| --- | --- |
+| readsb | 3.16.15 — wiedehopf git `v3.16-84-g05df27d` |
+| librtlsdr | v2.0.2 |
+| libusb | 1.0.30 |
+| zstd | 1.5.6 |
+| Sparkle | 2.9.5 (MIT) |
+
 ## 0.1.6 — 2026-08-10
 
 **The app has an icon.** macOS drew its generic placeholder everywhere the app
