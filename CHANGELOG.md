@@ -34,7 +34,7 @@ cutting a release, so publishing and reaching existing installs are one step.
 | | |
 | --- | --- |
 | File | `SkydexFeeder-0.1.7.dmg` |
-| SHA-256 | `3f1f846c0d0fe41ce3f45ca519814f4e9521997c9502c47b1dfa978afdaac965` |
+| SHA-256 | `55ab71ee54178411dcfa71d178793dae3586b1fbd17c5f8e334d1036875c4339` |
 | Signed | Developer ID Application: Essotek, TOV · notarized by Apple |
 | Update feed | https://feed.skydex.online/appcast.xml |
 
